@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Binary
+*.ilk
+*.pdb
+
+#Folder
+.vs/
+Build/
