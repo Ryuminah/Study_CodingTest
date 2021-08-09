@@ -2,5 +2,6 @@
 
 int main()
 {
-	Change();
+	//Change();
+	RulesOfBigNumber();
 }
