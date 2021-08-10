@@ -1,6 +1,6 @@
 #include "GreedyAlgorithm.h"
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 //21. 8.8 예제 1
 void Change()
@@ -89,9 +89,43 @@ void RulesOfBigNumber1()
 
     std::cout << Result;
 }
-
-// 같은 문제를 수열을 이용하여 풀이
-void RulesOfBigNumber2()
+void RulesOfBigNumber2()    // 수열을 이용한 풀이 방식
 {
-    // 아직 정리 안함^^//
+    int N = 0;
+    int M = 0;
+    int K = 0;
+    int Result = 0;
+
+    std::cin >> N;
+    std::cin >> M;
+    std::cin >> K;
+
+    // 입력값 만큼 배열의 크기를 예약
+    std::vector<int> arr;
+    arr.reserve(N);
+
+    for (int i = 0; i < N; ++i)
+    {
+        int input = 0;
+        std::cin >> input;
+        arr.push_back(input);
+    }
+
+    // stl을 이용한 정렬
+    std::sort(arr.begin(), arr.end(), std::greater<int>());
+
+    // 가장 큰 값과 두번째로 큰 값
+    int first = arr[0];
+    int second = arr[1];
+
+    // 수열이 반복되는 횟수를 구한 뒤, 이를 통하여 가장 큰 수가 등장하는 수를 구함.
+    int firstCount = (M / (K + 1)) * K;
+
+    // 나머지가 존재한다면, 나머지 만큼 큰 수가 반복될 것.
+    firstCount += M % (K + 1);
+    int secondCount = M - firstCount;
+
+    Result = (first * firstCount) + (second * secondCount);
+
+    std::cout << Result;
 }
