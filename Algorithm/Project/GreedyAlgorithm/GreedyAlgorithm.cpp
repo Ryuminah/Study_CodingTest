@@ -129,3 +129,97 @@ void RulesOfBigNumber2()    // 수열을 이용한 풀이 방식
 
     std::cout << Result;
 }
+
+//21.8.10 3번 숫자 카드 게임
+void NumberCardGame1()
+{
+    int N = 0;
+    int M = 0;
+    int Result = 0;
+
+    std::cin >> N;
+    std::cin >> M;
+
+    // 2차원 배열 선언 (N개만큼 행, 0으로 초기화된 M개 만큼의 열을 가진 vector를 생성하겠다)
+    std::vector<std::vector<int>> Card(N, std::vector<int>(M,0));
+    
+    // 카드 입력받기
+    for (int y = 0; y < M; ++y)
+    {
+        for (int x = 0; x < N; ++x)
+        {
+            int Number = 0;
+            std::cin >> Card[x][y];
+        }
+    }
+
+    std::vector<int> MinNumbers;
+
+    for (int y = 0; y < M; ++y)
+    {
+        int min = 10000;
+
+        for (int x = 0; x < N; ++x)
+        {
+            // 현재 숫자가 행의 최솟값보다 작다면 교체
+            if (Card[x][y] < min)
+            {
+                min = Card[x][y];
+            }
+        }
+
+        MinNumbers.push_back(min);
+    }
+
+    // 행의 수 만큼 크기 비교
+    for (int i = 0; i < N; ++i)
+    {
+        if (MinNumbers[i] > Result)
+        {
+            Result = MinNumbers[i];
+        }
+    }
+
+    std::cout << Result << std::endl;
+}
+
+void NumberCardGame2()
+{
+    int N = 0;
+    int M = 0;
+    int Result = 0;
+
+    std::cin >> N;
+    std::cin >> M;
+ 
+
+    // 카드 입력받기
+    for (int y = 0; y < M; ++y)
+    {
+        int min = 10001;
+
+        for (int x = 0; x < N; ++x)
+        {
+            int Number = 0;
+            std::cin >> Number;
+
+            // 한 줄에서 가장 큰 숫자 구하기.
+            if (min > Number)
+            {
+                min = Number;
+            }
+        }
+
+        // 작은 수 중에서 큰 수 찾기
+        if (min > Result)
+        {
+            Result = min;
+        }
+    }
+
+    std::cout << Result << std::endl;
+
+}
+
+
+

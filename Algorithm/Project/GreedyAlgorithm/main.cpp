@@ -2,6 +2,5 @@
 
 int main()
 {
-	//Change();
-	RulesOfBigNumber2();
+	NumberCardGame2();
 }
