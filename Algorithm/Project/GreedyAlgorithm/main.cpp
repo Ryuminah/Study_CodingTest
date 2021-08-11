@@ -2,5 +2,5 @@
 
 int main()
 {
-	NumberCardGame2();
+	MakeOne();
 }

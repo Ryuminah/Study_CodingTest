@@ -157,7 +157,7 @@ void NumberCardGame1()
 
     for (int y = 0; y < M; ++y)
     {
-        int min = 10000;
+        int min = 10001;
 
         for (int x = 0; x < N; ++x)
         {
@@ -167,16 +167,10 @@ void NumberCardGame1()
                 min = Card[x][y];
             }
         }
-
-        MinNumbers.push_back(min);
-    }
-
-    // 행의 수 만큼 크기 비교
-    for (int i = 0; i < N; ++i)
-    {
-        if (MinNumbers[i] > Result)
+        
+        if (min > Result)
         {
-            Result = MinNumbers[i];
+            Result = min;
         }
     }
 
@@ -219,6 +213,35 @@ void NumberCardGame2()
 
     std::cout << Result << std::endl;
 
+}
+
+void MakeOne()
+{
+    int N = 0;
+    int K = 0;
+    int Count = 0;
+
+    std::cin >> N >> K;
+
+    // N이 1이 될 때 까지 while 문
+    while (N != 1)
+    {
+        // 나눠 떨어지지 않을 경우에만 1을 빼고
+        if (N % K != 0)
+        {
+            N -= 1;
+        }
+
+        // 나머지 경우에는 항상 나눗셈을 한다.
+        else
+        {
+            N /= K;
+        }
+
+        ++Count;
+    }
+
+    std::cout << Count << std::endl;
 }
 
 

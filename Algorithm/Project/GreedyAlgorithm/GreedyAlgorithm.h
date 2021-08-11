@@ -11,3 +11,6 @@ void RulesOfBigNumber2();
 //21.8.10 3번 숫자 카드 게임
 void NumberCardGame1();
 void NumberCardGame2();
+
+//21.8.11 4번 숫자 카드 게임
+void MakeOne();
