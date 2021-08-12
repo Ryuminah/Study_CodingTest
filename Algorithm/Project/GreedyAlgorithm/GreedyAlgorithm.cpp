@@ -176,7 +176,6 @@ void NumberCardGame1()
 
     std::cout << Result << std::endl;
 }
-
 void NumberCardGame2()
 {
     int N = 0;
@@ -215,6 +214,7 @@ void NumberCardGame2()
 
 }
 
+//21.8.11 4번 1이 될때까지
 void MakeOne()
 {
     int N = 0;
@@ -242,6 +242,41 @@ void MakeOne()
     }
 
     std::cout << Count << std::endl;
+}
+
+//21.8.12 백준 4796번 캠핑
+void Camping()
+{
+    int InputCheck = 0;
+
+    while (true)
+    {
+        int L, P, V;
+
+        std::cin >> L >> P >> V;
+        ++InputCheck;
+
+        if (L == 0 && P == 0 && V == 0)
+        {
+            break;
+        }
+
+        int Result = L * (V / P);
+        int  remainder = V % P;
+
+        if (L > remainder)
+        {
+            Result += remainder;
+        }
+
+        else
+        {
+            Result += L;
+        }
+
+        std::cout << "Case " << InputCheck << ": " << Result << std::endl;
+    }
+
 }
 
 
