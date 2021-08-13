@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.GreedyAlgorithm", "01.GreedyAlgorithm", "{B0DFC054-A90F-4CEC-AFEC-2F46E62D4D89}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GreedyAlgorithm", "Project\GreedyAlgorithm\GreedyAlgorithm.vcxproj", "{970D49A4-3744-4FB1-ADC1-4849E36A696F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm", "Project\Algorithm.vcxproj", "{970D49A4-3744-4FB1-ADC1-4849E36A696F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{970D49A4-3744-4FB1-ADC1-4849E36A696F} = {B0DFC054-A90F-4CEC-AFEC-2F46E62D4D89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A62A80AC-9C91-4276-AE39-51AB33AA5186}

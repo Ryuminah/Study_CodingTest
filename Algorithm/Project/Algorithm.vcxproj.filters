@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{be266bd0-a633-4f64-b883-f840cbbb7f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm">
+      <UniqueIdentifier>{6754f7ab-609a-40d3-ba66-e4d7a3c000e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\01. GreedyAlgorithm">
+      <UniqueIdentifier>{bdf10290-8c20-447a-ac19-fc85974c1526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\02. Implementation">
+      <UniqueIdentifier>{df03e0e8-4a62-4e12-90d8-69f920623c57}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="GreedyAlgorithm.cpp">
+      <Filter>Algorithm\01. GreedyAlgorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="Implementation.cpp">
+      <Filter>Algorithm\02. Implementation</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GreedyAlgorithm.h">
+      <Filter>Algorithm\01. GreedyAlgorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Implementation.h">
+      <Filter>Algorithm\02. Implementation</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
