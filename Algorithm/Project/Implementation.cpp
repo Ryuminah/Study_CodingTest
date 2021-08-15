@@ -79,3 +79,27 @@ void UpDownLeftRight()
 	std::cout << currentPos.x << " " << currentPos.y;
 	
 }
+
+void Time()
+{
+	int N = 0;
+	int Count = 0;
+
+	std::cin >> N;
+
+	for (int h = 0; h <= N; ++h)
+	{
+		for (int m = 0; m < 60; ++m)
+		{
+			for (int s = 0; s < 60; ++s)
+			{
+				if (h % 10 == 3 || m / 10 == 3 || m % 10 == 3 || s / 10 == 3 || s % 10 == 3)
+				{
+					++Count;
+				}
+			}
+		}
+	}
+	
+	std::cout << Count;
+}
