@@ -85,7 +85,9 @@ void Time()
 	int N = 0;
 	int Count = 0;
 
+	// 시간을 입력받기
 	std::cin >> N;
+
 
 	for (int h = 0; h <= N; ++h)
 	{
@@ -102,4 +104,92 @@ void Time()
 	}
 	
 	std::cout << Count;
+}
+
+void RoyalNight()
+{
+	enum Pos {X, Y};
+
+	int CurrentPos[2] = { 0, 0 };
+	int Count = 0;
+
+	char KnightPos[] = "a1";
+	std::cin >> KnightPos;
+
+	// 위치를 담기
+	for (int i = 0; i < sizeof(KnightPos); ++i)
+	{
+		if (0 == KnightPos[i])
+		{
+			break;
+		}
+
+		CurrentPos[i] = KnightPos[i];
+	}
+	
+	// 8가지 선택지 체크
+	for (int i = 0; i < 8; ++i)
+	{
+		int NextPos[2] = { 0,0 };
+		NextPos[X] = CurrentPos[X];
+		NextPos[Y] = CurrentPos[Y];
+
+		switch (i)
+		{
+		case 0:
+			NextPos[X] += 2;
+			NextPos[Y] += 1;
+			break;
+		case 1:
+			NextPos[X] += 2;
+			NextPos[Y] -= 1;
+			break;
+
+		case 2:
+			NextPos[X] -= 2;
+			NextPos[Y] += 1;
+			break;
+
+		case 3:
+			NextPos[X] -= 2;
+			NextPos[Y] += 1;
+			break;
+
+		case 4:
+			NextPos[X] += 1;
+			NextPos[Y] -= 2;
+			break;
+
+		case 5:
+			NextPos[X] -= 1;
+			NextPos[Y] -= 2;
+			break;
+
+		case 6:
+			NextPos[X] += 1;
+			NextPos[Y] += 2;
+			break;
+
+		case 7:
+			NextPos[X] -= 1;
+			NextPos[Y] += 2;
+			break;
+
+		}
+
+		// 벽을 넘었다면 Count를 세지 않음
+		if (NextPos[X] <'a' || NextPos[X] > 'h'||
+			NextPos[Y] < '1' || NextPos[Y] > '8')
+		{
+			continue;
+		}
+
+		else
+		{
+			++Count;
+		}
+	}
+	
+	std::cout << Count;
+
 }
