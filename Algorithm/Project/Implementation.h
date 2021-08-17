@@ -8,3 +8,6 @@ void Time();
 
 //21. 8.16 실전 2 왕실의 나이트
 void RoyalNight();
+
+//21. 8.16 실전 2 왕실의 나이트
+void GameDevelopment();

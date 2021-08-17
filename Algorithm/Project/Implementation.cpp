@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <iostream>
+#include <map>
 
 //21. 8.13 예제 4-1 상하좌우
 void UpDownLeftRight()
@@ -192,4 +193,148 @@ void RoyalNight()
 	
 	std::cout << Count;
 
+}
+
+void GameDevelopment()
+{
+	enum Direction {NORTH, EAST, SOUTH, WEST};
+	enum Pos { X, Y, Dir };
+
+	int N = 0;		// 세로
+	int M = 0;		// 가로
+	int Count = 0;
+	
+
+	// 맵의 크기 입력
+	std::cin >> N >> M;
+
+	// X, Y, 방향
+	int player[3] = { 1,1,NORTH };
+
+	// 캐릭터의 위치
+	std::cout << '1' << ' ' << '1' << ' ' << '0' << std::endl;
+	std::vector<char> Width;
+	std::vector<std::vector<char>> Map(M, std::vector<char>(N, '1'));
+
+	Map[1][1] = '0';
+	Map[1][2] = '0';
+	Map[2][2] = '0';
+
+	for (int i = 0; i < N; ++i)
+	{
+		for (int j = 0; j < M; ++j)
+		{
+			std::cout << Map[i][j] << ' ';
+		}
+		std::cout << '\n';
+	}
+
+
+	int canMoveCheck = 0;
+
+	while (true)
+	{
+		Map[1][1] = '0';
+
+		// 값 복사
+		int playerNextPos[3];
+
+		for (int i = 0; i < 3; ++i)
+		{
+			playerNextPos[i] = player[i];
+
+		}
+
+		if (player[Dir] == WEST)
+		{
+			player[Dir] = NORTH;
+		}
+
+		// 1단계 수행
+		++player[Dir];
+
+		// 2단계 수행
+		switch (player[Dir])
+		{
+			
+		case NORTH:
+			playerNextPos[Y] -= 1;
+			playerNextPos[Dir] = NORTH;
+			break;
+		case EAST:
+			playerNextPos[X] += 1;
+			playerNextPos[Dir] = EAST;
+			break;
+
+		case SOUTH:
+			playerNextPos[Y] += 1;
+			playerNextPos[Dir] = SOUTH;
+			break;
+
+		case WEST:
+			playerNextPos[X] -= 1;
+			playerNextPos[Dir] = WEST;
+			break;
+
+		default:
+			break;
+		}
+
+		// 가려는 곳이 갈 수 있는 곳이라면
+		if (Map[playerNextPos[X]][playerNextPos[Y]] == '0')
+		{
+			// 갔다고 표시
+			Map[playerNextPos[X]][playerNextPos[Y]] = '2';
+			canMoveCheck = 0;
+
+		}
+
+		// 갈 수 없는 곳이라면 4방향이 전부 막혀있는지 체크
+		else
+		{
+			++canMoveCheck;
+
+			// 네 방향 다 막힌 상황일 경우 뒤쪽으로 이동
+			if (canMoveCheck == 4)
+			{
+				switch (player[Dir])
+				{
+
+				case NORTH:
+					playerNextPos[Y] += 1;
+					break;
+				case EAST:
+					playerNextPos[X] -= 1;
+					break;
+
+				case SOUTH:
+					playerNextPos[Y] -= 1;
+					break;
+
+				case WEST:
+					playerNextPos[X] += 1;
+					break;
+
+				default:
+					break;
+				}
+
+				// 이때 이동해야할 곳이 바다일 경우
+				if (Map[playerNextPos[X]][playerNextPos[Y]] == '1')
+				{
+					break;
+				}
+			}
+		}
+
+		// 이동
+		
+		player[X] = playerNextPos[X];
+		player[Y] = playerNextPos[Y];
+		player[Dir] = playerNextPos[Dir];
+		++Count;
+
+	}
+
+	std::cout << Count;
 }
