@@ -202,7 +202,6 @@ void GameDevelopment()
 
 	int N = 0;		// 세로
 	int M = 0;		// 가로
-	int Count = 0;
 	
 
 	// 맵의 크기 입력
@@ -231,10 +230,12 @@ void GameDevelopment()
 
 
 	int canMoveCheck = 0;
+	int Count = 1;
 
 	while (true)
 	{
-		Map[1][1] = '0';
+		// 현재 좌표는 이미 가본 곳
+		Map[1][1] = '1';
 
 		// 값 복사
 		int playerNextPos[3];
@@ -250,10 +251,10 @@ void GameDevelopment()
 			player[Dir] = NORTH;
 		}
 
-		// 1단계 수행
+		// 1단계 수행 (방향 변경)
 		++player[Dir];
 
-		// 2단계 수행
+		// 2단계 수행 (방향에 따른 인덱스 확인)
 		switch (player[Dir])
 		{
 			
@@ -280,19 +281,20 @@ void GameDevelopment()
 			break;
 		}
 
-		// 가려는 곳이 갈 수 있는 곳이라면
+		// 다음 방향이 갈 수 있는 곳이라면
 		if (Map[playerNextPos[X]][playerNextPos[Y]] == '0')
 		{
 			// 갔다고 표시
-			Map[playerNextPos[X]][playerNextPos[Y]] = '2';
+			Map[playerNextPos[X]][playerNextPos[Y]] = '1';
 			canMoveCheck = 0;
-
 		}
 
-		// 갈 수 없는 곳이라면 4방향이 전부 막혀있는지 체크
+		// 갈 수 없는 곳이라면
 		else
 		{
+			// 왼쪽 방향이 이미 가본 칸이라면 회전만 수행
 			++canMoveCheck;
+			player[Dir] = playerNextPos[Dir];
 
 			// 네 방향 다 막힌 상황일 경우 뒤쪽으로 이동
 			if (canMoveCheck == 4)
@@ -325,10 +327,15 @@ void GameDevelopment()
 					break;
 				}
 			}
+
+			// 모두 막힌 경우가 아니라면 회전만 수행
+			else
+			{
+				continue;
+			}
 		}
 
 		// 이동
-		
 		player[X] = playerNextPos[X];
 		player[Y] = playerNextPos[Y];
 		player[Dir] = playerNextPos[Dir];
