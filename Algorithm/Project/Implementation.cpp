@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <string>
 
 //21. 8.13 예제 4-1 상하좌우
 void UpDownLeftRight()
@@ -344,4 +345,50 @@ void GameDevelopment()
 	}
 
 	std::cout << Count;
+}
+
+void Message()
+{
+	int p = 0;
+	int w = 0;
+	int result = 0;
+	char inputString[1000];
+
+	// 입력
+	std::cin >> p >> w;
+	std::cin.ignore();
+	std::cin.getline(inputString, 1000);
+
+	int i = 0;
+	std::map<char, int> allText;
+	allText['A'] = p;
+	allText['D'] = p;
+	allText['G'] = p;
+	allText['J'] = p;
+	allText['M'] = p;
+	allText['P'] = p;
+	allText['T'] = p;
+	allText['W'] = p;
+	allText[' '] = p;
+
+	while (0 != inputString[i])
+	{
+		if (allText.end() !=allText.find(inputString[i]))
+		{
+			result += allText[inputString[i]];
+
+		}
+		else
+		{
+			result += w;
+		}
+
+		++i;
+	}
+
+	
+
+	std::cout << result;
+
+
 }
