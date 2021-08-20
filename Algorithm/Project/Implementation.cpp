@@ -359,36 +359,129 @@ void Message()
 	std::cin.ignore();
 	std::cin.getline(inputString, 1000);
 
-	int i = 0;
 	std::map<char, int> allText;
-	allText['A'] = p;
-	allText['D'] = p;
-	allText['G'] = p;
-	allText['J'] = p;
-	allText['M'] = p;
-	allText['P'] = p;
-	allText['T'] = p;
-	allText['W'] = p;
-	allText[' '] = p;
+	allText['A'] = 1;
+	allText['B'] = 2;
+	allText['C'] = 3;
 
-	while (0 != inputString[i])
+	allText['D'] = 1;
+	allText['E'] = 2;
+	allText['F'] = 3;
+
+	allText['G'] = 1;
+	allText['J'] = 2;
+	allText['I'] = 3;
+
+	allText['J'] = 1;
+	allText['K'] = 2;
+	allText['L'] = 3;
+
+	allText['M'] = 1;
+	allText['N'] = 2;
+	allText['O'] = 3;
+
+	allText['P'] = 1;
+	allText['Q'] = 2;
+	allText['R'] = 3;
+	allText['S'] = 4;
+
+
+	allText['T'] = 1;
+	allText['U'] = 2;
+	allText['V'] = 3;
+
+	allText['W'] = 1;
+	allText['X'] = 2;
+	allText['Y'] = 3;
+	allText['Z'] = 4;
+
+	allText[' '] = 1;
+
+	std::map<char, int> sameText;
+
+	int count = 1;
+	int group = 1;
+
+	for (int i = 0; i < 26; ++i)
 	{
-		if (allText.end() !=allText.find(inputString[i]))
-		{
-			result += allText[inputString[i]];
+		char Text = 'A' + i;
 
+		if (count <=3)
+		{
+			// 다음이 4번째 문자일 경우
+			if (Text == 'R' || Text == 'Y')
+			{
+				count = 3;
+				sameText[Text] = group;
+				continue;
+			}
+
+			sameText[Text] = group;
+			++count;
 		}
+
 		else
 		{
-			result += w;
+			// 다음 문자열로 바뀌는 상황
+			count = 2;
+			++group;
+			sameText[Text] = group;
+		}
+	}
+
+	sameText[' '] = 0;
+
+	int i = 0;
+	char prevString = 'a';
+	while (0 != inputString[i])
+	{
+		// 첫 글자는 대기없음.
+		if (i == 0)
+		{
+			result += allText[inputString[i]] * p;
+			prevString = inputString[i];
+			++i;
+			continue;
 		}
 
+		else
+		{
+			// 현재 글자가 띄어쓰기면
+			if (' ' == inputString[i])
+			{
+				result += (allText[inputString[i]] * p);
+			}
+
+			// 아닐 경우
+			else
+			{
+				// 대기시간을 체크하지 않아도 되는지 확인
+				if (sameText[inputString[i]] != sameText[prevString] || ' ' == sameText[prevString])
+				{
+					result += (allText[inputString[i]] * p);
+				}
+
+				// 같은 그룹에 속해있다면
+				else
+				{
+					// 첫번째 글자인지 체크
+					if (true == (allText[inputString[i]] == 1 && (sameText[inputString[i]] == sameText[prevString])))
+					{
+						result += (allText[inputString[i]] * p);
+					}
+
+					else
+					{
+						result += w + (allText[inputString[i]] * p);
+					}
+				}
+			}
+		}
+
+		prevString = inputString[i];
 		++i;
 	}
 
-	
-
 	std::cout << result;
-
 
 }

@@ -18,7 +18,6 @@ void Change()
         coinCount += n / coin;
         n %= coin;
     }
-
     std::cout << coinCount;
 }
 
@@ -89,6 +88,7 @@ void RulesOfBigNumber1()
 
     std::cout << Result;
 }
+
 void RulesOfBigNumber2()    // 수열을 이용한 풀이 방식
 {
     int N = 0;
@@ -176,6 +176,7 @@ void NumberCardGame1()
 
     std::cout << Result << std::endl;
 }
+
 void NumberCardGame2()
 {
     int N = 0;
@@ -185,7 +186,6 @@ void NumberCardGame2()
     std::cin >> N;
     std::cin >> M;
  
-
     // 카드 입력받기
     for (int y = 0; y < M; ++y)
     {
@@ -276,7 +276,6 @@ void Camping()
 
         std::cout << "Case " << InputCheck << ": " << Result << std::endl;
     }
-
 }
 
 
