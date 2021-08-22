@@ -13,6 +13,9 @@
     <Filter Include="Algorithm\02. Implementation">
       <UniqueIdentifier>{df03e0e8-4a62-4e12-90d8-69f920623c57}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Algorithm\03.DFS">
+      <UniqueIdentifier>{67ecc582-acc1-4add-a5e2-9d4eb53f973c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,6 +27,9 @@
     <ClCompile Include="Implementation.cpp">
       <Filter>Algorithm\02. Implementation</Filter>
     </ClCompile>
+    <ClCompile Include="DFS.cpp">
+      <Filter>Algorithm\03.DFS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GreedyAlgorithm.h">
@@ -31,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="Implementation.h">
       <Filter>Algorithm\02. Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="DFS.h">
+      <Filter>Algorithm\03.DFS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

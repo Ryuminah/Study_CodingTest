@@ -357,7 +357,7 @@ void Message()
 	// 입력
 	std::cin >> p >> w;
 	std::cin.ignore();
-	std::cin.getline(inputString, 1000);
+	std::cin.getline(inputString, 1001);
 
 	std::map<char, int> allText;
 	allText['A'] = 1;
@@ -432,54 +432,43 @@ void Message()
 	sameText[' '] = 0;
 
 	int i = 0;
-	char prevString = 'a';
 	while (0 != inputString[i])
 	{
 		// 첫 글자는 대기없음.
 		if (i == 0)
 		{
 			result += allText[inputString[i]] * p;
-			prevString = inputString[i];
+			char prevString = inputString[i];
 			++i;
 			continue;
 		}
 
+		char prevString = inputString[i - 1];
+
+		// 현재 글자가 띄어쓰기면
+		if (' ' == inputString[i])
+		{
+			result += (allText[inputString[i]] * p);
+		}
+
+		// 아닐 경우
 		else
 		{
-			// 현재 글자가 띄어쓰기면
-			if (' ' == inputString[i])
+			// 대기시간을 체크하지 않아도 되는지 확인
+			if (sameText[inputString[i]] != sameText[prevString] || ' ' == sameText[prevString])
 			{
 				result += (allText[inputString[i]] * p);
 			}
 
-			// 아닐 경우
+			// 같은 그룹에 속해있다면
 			else
 			{
-				// 대기시간을 체크하지 않아도 되는지 확인
-				if (sameText[inputString[i]] != sameText[prevString] || ' ' == sameText[prevString])
-				{
-					result += (allText[inputString[i]] * p);
-				}
-
-				// 같은 그룹에 속해있다면
-				else
-				{
-					// 첫번째 글자인지 체크
-					if (true == (allText[inputString[i]] == 1 && (sameText[inputString[i]] == sameText[prevString])))
-					{
-						result += (allText[inputString[i]] * p);
-					}
-
-					else
-					{
-						result += w + (allText[inputString[i]] * p);
-					}
-				}
+				result += w + (allText[inputString[i]] * p);
 			}
 		}
 
-		prevString = inputString[i];
-		++i;
+		++i; 
+
 	}
 
 	std::cout << result;
