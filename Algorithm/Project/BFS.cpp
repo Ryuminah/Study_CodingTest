@@ -93,7 +93,7 @@ void BFS()
 					// Queue에 Push 후 방문 처리함.
 					Visit.push(pNode.link[j]);
 					pNode.link[j]->check= true;
-					std::cout << j << "->";
+					std::cout << pNode.link[j]->value << "->";
 				}
 			}
 
