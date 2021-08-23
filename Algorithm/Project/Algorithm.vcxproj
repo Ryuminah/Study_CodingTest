@@ -144,12 +144,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BFS.cpp" />
     <ClCompile Include="DFS.cpp" />
     <ClCompile Include="GreedyAlgorithm.cpp" />
     <ClCompile Include="Implementation.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BFS.h" />
     <ClInclude Include="DFS.h" />
     <ClInclude Include="GreedyAlgorithm.h" />
     <ClInclude Include="Implementation.h" />

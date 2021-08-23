@@ -13,7 +13,10 @@
     <Filter Include="Algorithm\02. Implementation">
       <UniqueIdentifier>{df03e0e8-4a62-4e12-90d8-69f920623c57}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\03.DFS">
+    <Filter Include="Algorithm\04. BFS">
+      <UniqueIdentifier>{41bb5f93-ad5f-43e7-814d-58d1485b0c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\03. DFS">
       <UniqueIdentifier>{67ecc582-acc1-4add-a5e2-9d4eb53f973c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -28,7 +31,10 @@
       <Filter>Algorithm\02. Implementation</Filter>
     </ClCompile>
     <ClCompile Include="DFS.cpp">
-      <Filter>Algorithm\03.DFS</Filter>
+      <Filter>Algorithm\03. DFS</Filter>
+    </ClCompile>
+    <ClCompile Include="BFS.cpp">
+      <Filter>Algorithm\04. BFS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,7 +45,10 @@
       <Filter>Algorithm\02. Implementation</Filter>
     </ClInclude>
     <ClInclude Include="DFS.h">
-      <Filter>Algorithm\03.DFS</Filter>
+      <Filter>Algorithm\03. DFS</Filter>
+    </ClInclude>
+    <ClInclude Include="BFS.h">
+      <Filter>Algorithm\04. BFS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
