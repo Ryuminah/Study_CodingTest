@@ -201,7 +201,7 @@ void FreezingDrinks()
 					}
 
 					// 얼음틀의 위치에서 벗어났을 경우
-					if (nextPos[X] <0 || nextPos[X] >= N || nextPos[Y] <0 || nextPos[Y] >= N)
+					if (nextPos[X] < 0 || nextPos[X] >= N || nextPos[Y] < 0 || nextPos[Y] >= N)
 					{
 						++block;
 						continue;
@@ -214,7 +214,7 @@ void FreezingDrinks()
 						for (size_t k = 0; k < IceBox.size(); ++k)
 						{
 							// 얼음을 찾았다면
-							if (IceBox[k]->pos[X]== nextPos[X] && IceBox[k]->pos[Y] == nextPos[Y])
+							if (IceBox[k]->pos[X] == nextPos[X] && IceBox[k]->pos[Y] == nextPos[Y])
 							{
 								// 막혀야 하는 곳인지 확인
 								if (!IceBox[k]->m_Check && IceBox[k]->m_Ice == 0)
@@ -222,6 +222,7 @@ void FreezingDrinks()
 									// 해당 얼음을 방문한 곳으로 바꿔주고 다음 탐색할 얼음으로 설정
 									CheckIce = IceBox[k];
 									CheckIce->m_Check = true;
+									dir = -1;
 								}
 
 								// 이미 방문한 얼음이라면 못가는 곳으로 표시
@@ -233,14 +234,7 @@ void FreezingDrinks()
 								break;
 							}
 						}
-
-						// 체크해야 할 얼음이 바뀌었다면 while 처음부터 수행.
-						if (CheckIce->pos[X] != IceBox[i]->pos[X] || CheckIce->pos[Y] != IceBox[i]->pos[Y])
-						{
-							break;
-						}
 					}
-
 				}
 
 				// 사방이 조사할 수 없는 곳이라면 얼음 생성 끝
@@ -250,7 +244,6 @@ void FreezingDrinks()
 					break;
 				}
 			}
-			
 		}
 
 		// 얼음이 아니거나 탐색을 이미 했다면.
@@ -258,6 +251,8 @@ void FreezingDrinks()
 		{
 			continue;
 		}
+
+		// 방문할 곳이 없으면 다시 이전으로 돌아가서 탐색하는 로직이 엄슴 , ,, 
 	}
 
 	std::cout << result;
