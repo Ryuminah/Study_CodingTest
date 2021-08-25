@@ -1,4 +1,4 @@
 #pragma once
 
-//21. 8.23 DFS example
+//21. 8.24 BFS example
 void BFS();
