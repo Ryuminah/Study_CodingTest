@@ -163,7 +163,7 @@ void FreezingDrinks()
 	{
 		for (int j = 0; j < M; j++)
 		{
-			scanf("%1d", &Graph[i][j]);
+			scanf_s("%1d", &Graph[i][j]);
 		}
 	}
 
