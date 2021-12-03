@@ -128,8 +128,6 @@ void DFS()
 	Graph.clear();
 }
 
-
-
 bool CheckIceBox(int _x, int _y, int _n, int _m, int _Graph[][1000])
 {
 	if (_x <= -1 || _x >= _n || _y <= -1 || _y >= _m)

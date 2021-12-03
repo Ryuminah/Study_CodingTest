@@ -190,3 +190,68 @@ void EscapeTheMaze()
 	
 	std::cout << result;
 }
+
+
+void JumpJump()
+{
+	struct CStone
+	{
+		bool bCanVisit;
+		int Number;
+	};
+
+	std::vector<CStone> vecStoneBridge;
+
+	// 돌다리의 갯수
+	int StoneCount = 0;
+	std::cin >> StoneCount;
+
+	// 돌다리의 갯수만큼 돌 생성.
+	for (int i = 0; i < StoneCount; ++i)
+	{
+		CStone stone;
+		stone.bCanVisit = false;
+		std::cin >> stone.Number;
+		vecStoneBridge.push_back(stone);
+	}
+
+	// 시작점 입력받기.
+	int StartPoint = 0;
+	std::cin >> StartPoint;
+
+	// 현재 위치 
+	StartPoint -= 1;		// 인덱스를 맞추기 위함
+	int Result = 0;
+
+	std::queue<int> q;
+	vecStoneBridge[StartPoint].bCanVisit = true;
+	q.push(StartPoint);
+	++Result;
+
+	// 돌 건너기
+	while (!q.empty())
+	{
+		// 다음 이동할 위치(양의 방향부터 탐색)
+		int currentIndex = q.front();
+		int distance = vecStoneBridge[currentIndex].Number;
+		q.pop();
+
+		for (int i = 0; i < 2; ++i)
+		{
+			distance *= -1;
+			int nextIndex = currentIndex + distance;
+
+			// 아직 방문하지 않은 곳이고 범위 내에 존재하는 곳이라면
+			if (-1 < nextIndex && nextIndex < StoneCount && !vecStoneBridge[nextIndex].bCanVisit)
+			{
+				vecStoneBridge[nextIndex].bCanVisit = true;
+				q.push(nextIndex);
+				++Result;
+			}
+		}
+
+	
+	}
+
+	std::cout << Result << std::endl;
+}
