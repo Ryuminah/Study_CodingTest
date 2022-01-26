@@ -19,6 +19,9 @@
     <Filter Include="Algorithm\03. DFS">
       <UniqueIdentifier>{67ecc582-acc1-4add-a5e2-9d4eb53f973c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Algorithm\05. Sorting">
+      <UniqueIdentifier>{db2d0d01-3efd-42f6-abe2-c2f57bdf3719}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="BFS.cpp">
       <Filter>Algorithm\04. BFS</Filter>
     </ClCompile>
+    <ClCompile Include="Sorting.cpp">
+      <Filter>Algorithm\05. Sorting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GreedyAlgorithm.h">
@@ -49,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="BFS.h">
       <Filter>Algorithm\04. BFS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sorting.h">
+      <Filter>Algorithm\05. Sorting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
