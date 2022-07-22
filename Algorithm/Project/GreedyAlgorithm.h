@@ -17,3 +17,6 @@ void MakeOne();
 
 //21.8.12 백준 4796번 캠핑
 void Camping();
+ 
+//22.7.22 백준 11399번 캠핑
+void ATM();

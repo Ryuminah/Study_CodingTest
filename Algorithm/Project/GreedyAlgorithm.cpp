@@ -111,7 +111,7 @@ void RulesOfBigNumber2()    // 수열을 이용한 풀이 방식
         arr.push_back(input);
     }
 
-    // stl을 이용한 정렬
+    // stl을 이용한 내림차순 정렬
     std::sort(arr.begin(), arr.end(), std::greater<int>());
 
     // 가장 큰 값과 두번째로 큰 값
@@ -276,6 +276,40 @@ void Camping()
 
         std::cout << "Case " << InputCheck << ": " << Result << std::endl;
     }
+}
+
+void ATM()
+{
+    // Input
+    int N = 0; 
+    std::cin >> N;
+
+    std::vector<int> P;
+    P.reserve(N);
+
+    for (int i = 0; i < N; ++i)
+    {
+        int time = 0;
+        std::cin >> time;
+        P.push_back(time);
+    }
+
+    // 배열을 오름차순으로 정렬
+    std::sort(P.begin(), P.end());
+
+    int result = 0;
+    int finalResult = 0;
+
+    for (int i = 0; i < N; ++i)
+    {
+        int currentTime = P[i] + result;
+        result = currentTime;
+
+        finalResult += result;
+    }
+
+    // Output
+    std::cout << finalResult;
 }
 
 
