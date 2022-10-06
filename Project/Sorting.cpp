@@ -1,6 +1,7 @@
 #include "Sorting.h"
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 void SelectionSort()
 {
@@ -181,4 +182,25 @@ void CountSort(int* arrData, int arrSize, int minValue, int maxValue)
 	}
 
 	delete[] arrSort;
+}
+
+void UpToDown()
+{
+	int count = 0;
+	std::cin >> count;
+	
+	int* arrSort = new int[count];
+
+
+	for (int i = 0; i < count; ++i)
+	{
+		std::cin >> arrSort[i];
+	}
+
+	std::sort(arrSort, arrSort+count, std::greater<>());
+
+	for (int i = 0; i < count; ++i)
+	{
+		std::cout << arrSort[i] << ' ';
+	}
 }
