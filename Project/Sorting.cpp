@@ -1,5 +1,6 @@
 #include "Sorting.h"
 #include <vector>
+#include <map>
 #include <iostream>
 #include <algorithm>
 
@@ -202,5 +203,29 @@ void UpToDown()
 	for (int i = 0; i < count; ++i)
 	{
 		std::cout << arrSort[i] << ' ';
+	}
+}
+
+void PrintStudent()
+{
+	int studentCount = 0;
+	std::cin >> studentCount;
+	std::map<int, std::string> studentData;
+
+	for (int i = 0; i < studentCount; ++i)
+	{
+		std::string name;
+		int score;
+		std::cin >> name >> score;
+
+		studentData[score] = name;
+	}
+
+	auto iter = studentData.begin();
+	auto iterEnd = studentData.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		std::cout << iter->second << ' ';
 	}
 }

@@ -16,3 +16,6 @@ void CountSort(int* arrData, int arrSize, int minValue, int maxValue);
 ////////////////////////////////////// 문제 //////////////////////////////////////
 // 실전문제 2번 위에서 아래로
 void UpToDown();
+
+// 실전문제 3번 위에서 아래로
+void PrintStudent();
