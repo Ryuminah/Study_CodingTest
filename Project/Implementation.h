@@ -17,3 +17,9 @@ void Message();
 
 //21. 8.20 백준 2037번 문자메시지
 void Message();
+
+//22.10.07 백준 10818번 문자메시지
+void MinMax();
+
+//22.10.07 백준 10818번 문자메시지
+void CountWord();

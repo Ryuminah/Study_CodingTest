@@ -474,3 +474,53 @@ void Message()
 	std::cout << result;
 
 }
+
+void MinMax()
+{
+	int count;
+	std::cin >> count;
+
+	int input;
+	int min = 1000001;
+	int max = -1000001;
+
+	for (int i = 0; i < count; ++i)
+	{
+		std::cin >> input;
+
+		if (input > max)
+		{
+			max = input;
+		}
+
+		if (input < min)
+		{
+			min = input;
+		}
+	}
+
+	std::cout << min << ' ' << max;
+}
+
+void CountWord()
+{
+	std::string sentence;
+	std::getline(std::cin, sentence);
+
+	int wordCount = 0;
+	char prevWord = ' ';
+
+	for (size_t i = 0; i < sentence.length(); ++i)
+	{	
+		// 이전 단어가 공백일 경우 
+		if (' ' == prevWord &&
+			' ' != sentence[i])
+		{
+			++wordCount;
+		}
+
+		prevWord = sentence[i];
+	}
+
+	std::cout << wordCount;
+}
