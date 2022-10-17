@@ -229,3 +229,49 @@ void PrintStudent()
 		std::cout << iter->second << ' ';
 	}
 }
+
+void SevenDwarfs()
+{
+	std::vector<int> arrNumber;
+	arrNumber.resize(9);
+	int totalValue = 0;
+
+	for (int i = 0; i < 9; ++i)
+	{
+		std::cin >> arrNumber[i];
+		totalValue += arrNumber[i];
+	}
+	
+	// 7개의 인덱스를 저장
+	std::sort(arrNumber.begin(), arrNumber.end());
+	
+	
+	for (int i = 0; i < arrNumber.size(); ++i)
+	{
+		for (int j = 0; j < arrNumber.size(); ++j)
+		{
+			if (i == j)
+			{
+				continue;
+			}
+
+			int number = arrNumber[i] + arrNumber[j];
+
+			if ((totalValue - number) == 100)
+			{
+				for (int k = 0; k < arrNumber.size(); k++)
+				{
+					if (k == i || k == j)
+					{
+						continue;
+					}
+
+					std::cout << arrNumber[k] << '\n';
+				}
+
+				return;
+			}
+		}
+	}
+
+}

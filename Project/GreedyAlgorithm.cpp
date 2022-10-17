@@ -312,5 +312,31 @@ void ATM()
     std::cout << finalResult;
 }
 
+void SugarDelivery()
+{
+    int n, result = 0;
+    std::cin >> n;
+
+    int sugar = n;
+
+    while (n >= 0)
+    {
+        if ( n%5 == 0)
+        {
+            result += n / 5;
+            break;
+        }
+        n -= 3;
+        ++result;
+    }
+
+
+    if (n <0)
+    {
+        result = -1;
+    }
+
+    std::cout << result;
+}
 
 

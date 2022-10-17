@@ -19,3 +19,6 @@ void UpToDown();
 
 // 실전문제 3번 위에서 아래로
 void PrintStudent();
+
+// 백준 2309번 일곱난쟁이
+void SevenDwarfs();

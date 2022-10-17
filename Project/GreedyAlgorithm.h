@@ -20,3 +20,6 @@ void Camping();
  
 //22.7.22 백준 11399번 캠핑
 void ATM();
+
+//22.7.22 백준 2839번 설탕 배달
+void SugarDelivery();
