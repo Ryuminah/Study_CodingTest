@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include <string>
 
 //21. 8.13 예제 4-1 상하좌우
 void UpDownLeftRight();
@@ -23,3 +25,5 @@ void MinMax();
 
 //22.10.07 백준 10818번 문자메시지
 void CountWord();
+
+std::vector<int> Tuple(std::string s);

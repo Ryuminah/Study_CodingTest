@@ -3,7 +3,10 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <unordered_map>
 #include <string>
+
+using namespace std;
 
 //21. 8.13 예제 4-1 상하좌우
 void UpDownLeftRight()
@@ -523,4 +526,66 @@ void CountWord()
 	}
 
 	std::cout << wordCount;
+}
+
+std::vector<int> Tuple(std::string s)
+{
+	vector<int> answer;
+
+	string number;
+	map<string, int> tuple;
+
+	// 문자를 읽으면서
+	for (int i = 0; i < s.length(); ++i)
+	{
+		if (s[i] == '{')
+		{
+			continue;
+		}
+
+		else if (s[i] == ',' || s[i] == '}')
+		{
+			// 이미 존재하는 숫자인지 확인
+			if (number.size() != 0)
+			{
+				auto iter = tuple.find(number);
+
+				if (iter == tuple.end())
+				{
+					//tuple.insert({ number, 1 });
+					tuple.insert(std::pair<string, int>(number, 1));
+
+				}
+
+				else
+				{
+					iter->second++;
+				}
+
+				number.clear();
+			}
+		}
+
+		// 숫자일 경우
+		else
+		{
+			number += s[i];
+		}
+	}
+
+
+	map<int, string, greater<int>> sortTuple;
+
+	for (auto iter = tuple.begin(); iter != tuple.end(); ++iter)
+	{
+		sortTuple.insert({ iter->second,iter->first });
+	}
+
+	for (auto iter = sortTuple.begin(); iter != sortTuple.end(); ++iter)
+	{
+		answer.push_back(stoi(iter->second));
+	}
+
+	return answer;
+
 }

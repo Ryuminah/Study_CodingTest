@@ -11,4 +11,4 @@ void FreezingDrinks();
 
 // 22.11.6 프로그래머스 네트워크
 void CheckNetwork(bool* visited,int currentDepth, std::vector<std::vector<int>>& computers);
-void Network(int n, std::vector<std::vector<int>> computers);
+int Network(int n, std::vector<std::vector<int>> computers);
