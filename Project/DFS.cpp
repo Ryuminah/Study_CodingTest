@@ -1,6 +1,6 @@
 #include "DFS.h"
 #include <algorithm>
-#include <vector>
+
 #include <map>
 #include <list>
 #include <stack>
@@ -180,4 +180,42 @@ void FreezingDrinks()
 	}
 	std::cout << result << '\n'; // 정답 출력 
 }
+
+void CheckNetwork(bool* visited, int currentDepth, std::vector<std::vector<int>>& computers)
+{
+	visited[currentDepth] = true;
+
+	for (int i = currentDepth, j = 0; j < computers.size(); ++j)
+	{
+		if (i == j)
+		{
+			continue;
+		}
+
+		if (!visited[j] && computers[i][j])
+		{
+			CheckNetwork(visited,j,computers);
+		}
+	}
+}
+
+int Network(int n, std::vector<std::vector<int>> computers)
+{
+	bool visited[200] = { false };
+	int answer = 0;
+
+	for (int i = 0; i < n; ++i)
+	{
+		// 방문한 적이 없는 노드라면 (연결이 끊겼을 경우)
+		if (!visited[i])
+		{
+			++answer;
+
+			// 연결된 네트워크를 순회
+			CheckNetwork(visited, i, computers);
+		}
+	}
+		return answer;
+}
+
 

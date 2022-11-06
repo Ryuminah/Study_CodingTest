@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 // Depth First Search
 
 //21. 8.22 DFS example
@@ -8,3 +9,6 @@ void DFS();
 bool CheckIceBox(int _x, int _y, int _n, int _m, int _Graph[][1000]);		// DFS
 void FreezingDrinks();
 
+// 22.11.6 프로그래머스 네트워크
+void CheckNetwork(bool* visited,int currentDepth, std::vector<std::vector<int>>& computers);
+void Network(int n, std::vector<std::vector<int>> computers);
