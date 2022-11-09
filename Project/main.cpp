@@ -4,6 +4,7 @@
 #include "DFS.h"
 #include "BFS.h"
 #include "Sorting.h"
+#include "Queue.h"
 
 
 
@@ -11,12 +12,10 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	std::string s = "{{2},{2,1},{2,1,3},{2,1,3,4}}";
+	std::vector<int> progress = { 95, 90, 99, 99, 80, 99 };
+	std::vector<int> speed = { 1, 1, 1, 1, 1, 1 };
 
-	std::vector<int> v = Tuple(s);
+	std::vector<int> v = DevelopFeature(progress,speed);
+	std::vector<int> v2 = DevelopFeature_2(progress, speed);
 
-	for (int i = 0; i < v.size(); ++i)
-	{
-		std::cout << v[i] << ' ';
-	}
 }
