@@ -22,6 +22,9 @@
     <Filter Include="Algorithm\05. Sorting">
       <UniqueIdentifier>{db2d0d01-3efd-42f6-abe2-c2f57bdf3719}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Algorithm\10. Stack/Queue">
+      <UniqueIdentifier>{bfdbb047-9904-49e0-a10d-2fea815b6e89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,6 +45,9 @@
     <ClCompile Include="Sorting.cpp">
       <Filter>Algorithm\05. Sorting</Filter>
     </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>Algorithm\10. Stack/Queue</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GreedyAlgorithm.h">
@@ -58,6 +64,12 @@
     </ClInclude>
     <ClInclude Include="Sorting.h">
       <Filter>Algorithm\05. Sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="STLheader.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Algorithm\10. Stack/Queue</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -150,6 +150,7 @@
     <ClCompile Include="Implementation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sorting.cpp" />
+    <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BFS.h" />
@@ -157,6 +158,8 @@
     <ClInclude Include="GreedyAlgorithm.h" />
     <ClInclude Include="Implementation.h" />
     <ClInclude Include="Sorting.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="STLheader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
