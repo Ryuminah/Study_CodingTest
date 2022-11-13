@@ -1,10 +1,5 @@
 #include "Implementation.h"
-#include <algorithm>
-#include <vector>
-#include <iostream>
-#include <map>
-#include <unordered_map>
-#include <string>
+#include "STLheader.h"
 
 using namespace std;
 
@@ -588,4 +583,49 @@ std::vector<int> Tuple(std::string s)
 
 	return answer;
 
+}
+
+int LeastCommonMultiple(std::vector<int> arr)
+{
+	int answer = 0;
+
+	sort(arr.begin(), arr.end());
+
+	int rest = 0;
+
+	if (arr.size() == 1)
+	{
+		return arr[0];
+	}
+
+	answer = arr[0];
+
+	for (int i = 1; i < arr.size(); ++i)
+	{
+		int current = arr[i];
+
+		// 다음 수의 약수인 경우
+		int bigger = max(answer, current);
+		int divide = min(answer, current);
+		int remainder = bigger % divide;
+
+		// 약수인 경우
+		if (remainder == 0)
+		{
+			answer = bigger;
+		}
+
+		else
+		{
+			int total = current;
+			while ((total % answer) != 0)
+			{
+				total += current;
+			}
+
+			answer = total;
+		}
+	}
+
+	return answer;
 }

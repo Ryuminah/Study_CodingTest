@@ -27,3 +27,5 @@ void MinMax();
 void CountWord();
 
 std::vector<int> Tuple(std::string s);
+
+int LeastCommonMultiple(std::vector<int> arr);
