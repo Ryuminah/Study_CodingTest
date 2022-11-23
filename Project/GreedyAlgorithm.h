@@ -1,4 +1,5 @@
 #pragma once
+#include "STLheader.h"
 #include <iostream>
 
 //21. 8.8 예제 1
@@ -23,3 +24,6 @@ void ATM();
 
 //22.7.22 백준 2839번 설탕 배달
 void SugarDelivery();
+
+// 22.11.23 프로그래머스 큰 수 만들기
+std::string MakeBigNumber(std::string number, int k);

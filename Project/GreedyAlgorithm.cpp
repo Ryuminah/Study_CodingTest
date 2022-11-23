@@ -339,4 +339,59 @@ void SugarDelivery()
     std::cout << result;
 }
 
+std::string MakeBigNumber(std::string number, int k)
+{
+    // ÀÌÁß for¹®
+    //std::string answer = "";
+
+    //int index = -1;
+    //for (int i = 0; i < number.size() - k; ++i)
+    //{
+    //    char maxValue = ' ';
+    //    for (int j = index + 1; j <= k + i; ++j)
+    //    {
+    //        if (maxValue < number[j])
+    //        {
+    //            maxValue = number[j];
+    //            index = j;
+    //        }
+    //    }
+    //    answer += maxValue;
+    //}
+
+    //return answer;
+
+	std::string answer = "";
+	std::stack<char> sNumber;
+
+	for (int i = 0; i < number.length(); ++i)
+	{
+
+		while (sNumber.size() != 0 &&
+			k > 0)
+		{
+			if (sNumber.top() < number[i])
+			{
+				sNumber.pop();
+				answer.pop_back();
+				--k;
+			}
+
+			else
+			{
+				break;
+			}
+		}
+
+		if (sNumber.size() < (number.size() - k))
+		{
+			sNumber.push(number[i]);
+			answer += number[i];
+		}
+	}
+
+	return answer;
+
+}
+
 

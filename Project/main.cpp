@@ -12,10 +12,7 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	std::vector<int> progress = { 95, 90, 99, 99, 80, 99 };
-	std::vector<int> speed = { 1, 1, 1, 1, 1, 1 };
-
-	std::vector<int> v = DevelopFeature(progress,speed);
-	std::vector<int> v2 = DevelopFeature_2(progress, speed);
+	std::string number = "4177252841";
+	MakeBigNumber(number, 4);
 
 }
