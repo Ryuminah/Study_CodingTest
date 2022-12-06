@@ -151,6 +151,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sorting.cpp" />
     <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="DynamicPrograming.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BFS.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Sorting.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="STLheader.h" />
+    <ClInclude Include="DynamicPrograming.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

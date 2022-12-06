@@ -22,8 +22,17 @@
     <Filter Include="Algorithm\05. Sorting">
       <UniqueIdentifier>{db2d0d01-3efd-42f6-abe2-c2f57bdf3719}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\10. Stack/Queue">
+    <Filter Include="Algorithm\09. Stack/Queue">
       <UniqueIdentifier>{bfdbb047-9904-49e0-a10d-2fea815b6e89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\06.BinarySearch">
+      <UniqueIdentifier>{3220e86d-4a61-463d-90d7-23b9b80b83e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\07. Graph">
+      <UniqueIdentifier>{39bd60e3-3fcb-4b91-8764-8afe36df0b26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\08. DP">
+      <UniqueIdentifier>{c19c7e2b-2fb8-48c7-920b-1e8a51d3686b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +55,10 @@
       <Filter>Algorithm\05. Sorting</Filter>
     </ClCompile>
     <ClCompile Include="Queue.cpp">
-      <Filter>Algorithm\10. Stack/Queue</Filter>
+      <Filter>Algorithm\09. Stack/Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicPrograming.cpp">
+      <Filter>Algorithm\08. DP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +81,10 @@
       <Filter>main</Filter>
     </ClInclude>
     <ClInclude Include="Queue.h">
-      <Filter>Algorithm\10. Stack/Queue</Filter>
+      <Filter>Algorithm\09. Stack/Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicPrograming.h">
+      <Filter>Algorithm\08. DP</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
