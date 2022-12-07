@@ -629,3 +629,46 @@ int LeastCommonMultiple(std::vector<int> arr)
 
 	return answer;
 }
+
+std::vector<int> WordChain(int n, std::vector<string> words)
+{
+	vector<int> answer;
+	answer.resize(2);
+
+	map<string, int> wordsCountTable;
+
+	wordsCountTable[words[0]] = 1;
+	int order = 2;
+
+	for (int i = 1; i < words.size(); ++i)
+	{
+		string currentWord = words[i];
+		string prevWord = words[i - 1];
+
+		// 탈락 조건 체크
+		// 이미 등록되어 있는 단어거나 앞의 단어와 이어지지 않는 경우
+		if (wordsCountTable.find(words[i]) != wordsCountTable.end() ||
+			currentWord.front() != prevWord.back())
+		{
+			answer[0] = order;
+			answer[1] = (i + 1) % n != 0 ? (i + 1) / n + 1 : (i + 1) / n;
+
+			return answer;
+		}
+
+		// table에 등록
+		wordsCountTable[words[i]] = order;
+
+		if (order == n)
+		{
+			order = 1;
+		}
+
+		else
+		{
+			++order;
+		}
+	}
+
+	return answer;
+}

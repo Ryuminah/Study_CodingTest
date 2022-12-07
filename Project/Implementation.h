@@ -29,3 +29,6 @@ void CountWord();
 std::vector<int> Tuple(std::string s);
 
 int LeastCommonMultiple(std::vector<int> arr);
+
+// 22.12.07 프로그래머스 영어 끝말잇기
+std::vector<int> WordChain(int n, std::vector<string> words);
