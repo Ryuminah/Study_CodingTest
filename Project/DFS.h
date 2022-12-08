@@ -12,3 +12,7 @@ void FreezingDrinks();
 // 22.11.6 프로그래머스 네트워크
 void CheckNetwork(bool* visited,int currentDepth, std::vector<std::vector<int>>& computers);
 int Network(int n, std::vector<std::vector<int>> computers);
+
+// 22.12.8 프로그래머스 타겟넘버
+void CalculateNumber(std::vector<int> numbers, int target, int index, int totalSum, int& answer);
+int TargetNumber(std::vector<int> numbers, int target);

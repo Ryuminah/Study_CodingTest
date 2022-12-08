@@ -218,4 +218,31 @@ int Network(int n, std::vector<std::vector<int>> computers)
 		return answer;
 }
 
+void CalculateNumber(std::vector<int> numbers, int target, int index, int totalSum, int& answer)
+{
+	if (index == numbers.size() - 1)
+	{
+		if (totalSum == target)
+		{
+			++answer;
+		}
+
+		return;
+	}
+
+	CalculateNumber(numbers, target, index + 1, numbers[index + 1] + totalSum, answer);
+	CalculateNumber(numbers, target, index + 1, -numbers[index + 1] + totalSum, answer);
+}
+
+int TargetNumber(std::vector<int> numbers, int target)
+{
+	int i = 0;
+	int answer = 0;
+
+	CalculateNumber(numbers, target, i, numbers[0], answer);
+	CalculateNumber(numbers, target, i, -numbers[0], answer);
+
+	return answer;
+}
+
 
