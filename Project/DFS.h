@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+
 // Depth First Search
 
 //21. 8.22 DFS example
@@ -18,5 +19,5 @@ void CalculateNumber(std::vector<int> numbers, int target, int index, int totalS
 int TargetNumber(std::vector<int> numbers, int target);
 
 //22.12.10 백준 10026번 적록색약
-void MakeArea(std::vector<std::vector<char>> grid, bool visit[100][100], int indexX, int indexY, char color);
+void MakeArea(std::vector<std::vector<char>> grid, int indexX, int indexY, char color);
 void RedGreenColorWeakness();

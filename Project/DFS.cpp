@@ -242,27 +242,46 @@ int TargetNumber(std::vector<int> numbers, int target)
 	return answer;
 }
 
-void MakeArea(std::vector<vector<char>> grid, bool** visit, int indexX, int indexY, char color)
+
+bool visit[100][100] = { false };
+
+
+void MakeArea(std::vector<vector<char>> grid, int indexX, int indexY, char color)
 {
 	// 이미 방문했거나 탐색할 수 없으면 종료
 	if (visit[indexY][indexX] ||
-		indexX > 0 || indexY > 0 || indexX >= grid.size() || indexY >= grid.size())
+		indexX < 0 || indexY < 0 || indexX >= grid.size() || indexY >= grid.size())
 	{
 		return;
 	}
 
-	visit[indexY][indexX] = true;
 
-	int dirX[] = { 1,0,-1,0 };
-	int dirY[] = { 0,1, 0,-1 };
-
-	for (int i = 0; i < 4; ++i)
+	// 같은 색이 아니라면 탐색을 중지한다.
+	if (color != grid[indexY][indexX])
 	{
-		int nextX = indexX + dirX[i];
-		int nextY = indexX + dirY[i];
-
-		MakeArea(grid, visit, nextX, nextY, color);
+		return;
 	}
+
+	else
+	{
+
+		visit[indexY][indexX] = true;
+
+		int dirX[] = { 1,0,-1,0 };
+		int dirY[] = { 0,1, 0,-1 };
+
+		for (int i = 0; i < 4; ++i)
+		{
+			int nextX = indexX + dirX[i];
+			int nextY = indexX + dirY[i];
+
+			// bool로 바꿔서 생각하기
+			MakeArea(grid, nextX, nextY, color);
+
+			// 4방향 다 갈 수 없으면 영역 종료
+		}
+	}
+
 }
 
 void RedGreenColorWeakness()
@@ -272,7 +291,6 @@ void RedGreenColorWeakness()
 
 	int N;
 	vector<vector<char>> grid;
-	bool visit[100][100] = { false };
 
 	// Input
 	cin >> N;
@@ -290,14 +308,6 @@ void RedGreenColorWeakness()
 		}
 	}
 
-	/*for (int y = 0; y < N; ++y)
-	{
-		for (int x = 0; x < N; ++x)
-		{
-			cin >> grid[y][x];
-		}
-	}*/
-
 	for (int y = 0; y < N; ++y)
 	{
 		for (int x = 0; x < N; ++x)
@@ -307,18 +317,15 @@ void RedGreenColorWeakness()
 				continue;
 			}
 
-			MakeArea(grid, visit, x, y, grid[y][x]);
+			MakeArea(grid, x, y, grid[y][x]);
+			++result;
 
 			if (grid[y][x] == 'B')
 			{
 				++blueCount;
 			}
-
 		}
 	}
-
-
-
 
 	cout << result << ' ' << result - blueCount;
 }
