@@ -1,4 +1,5 @@
 #pragma once
+#include "STLheader.h"
 
 // 선택 정렬
 void SelectionSort();
@@ -22,3 +23,6 @@ void PrintStudent();
 
 // 백준 2309번 일곱난쟁이
 void SevenDwarfs();
+
+// 프로그래머스 최솟값 만들기
+int MakeMinimumValue(std::vector<int> A, std::vector<int> B);

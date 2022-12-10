@@ -16,3 +16,7 @@ int Network(int n, std::vector<std::vector<int>> computers);
 // 22.12.8 프로그래머스 타겟넘버
 void CalculateNumber(std::vector<int> numbers, int target, int index, int totalSum, int& answer);
 int TargetNumber(std::vector<int> numbers, int target);
+
+//22.12.10 백준 10026번 적록색약
+void MakeArea(std::vector<std::vector<char>> grid, bool visit[100][100], int indexX, int indexY, char color);
+void RedGreenColorWeakness();

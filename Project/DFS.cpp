@@ -1,10 +1,7 @@
 #include "DFS.h"
-#include <algorithm>
+#include "STLheader.h"
 
-#include <map>
-#include <list>
-#include <stack>
-#include <iostream>
+using namespace std;
 
 void DFS()
 {
@@ -243,6 +240,87 @@ int TargetNumber(std::vector<int> numbers, int target)
 	CalculateNumber(numbers, target, i, -numbers[0], answer);
 
 	return answer;
+}
+
+void MakeArea(std::vector<vector<char>> grid, bool** visit, int indexX, int indexY, char color)
+{
+	// 이미 방문했거나 탐색할 수 없으면 종료
+	if (visit[indexY][indexX] ||
+		indexX > 0 || indexY > 0 || indexX >= grid.size() || indexY >= grid.size())
+	{
+		return;
+	}
+
+	visit[indexY][indexX] = true;
+
+	int dirX[] = { 1,0,-1,0 };
+	int dirY[] = { 0,1, 0,-1 };
+
+	for (int i = 0; i < 4; ++i)
+	{
+		int nextX = indexX + dirX[i];
+		int nextY = indexX + dirY[i];
+
+		MakeArea(grid, visit, nextX, nextY, color);
+	}
+}
+
+void RedGreenColorWeakness()
+{
+	int result = 0;
+	int blueCount = 0;
+
+	int N;
+	vector<vector<char>> grid;
+	bool visit[100][100] = { false };
+
+	// Input
+	cin >> N;
+	grid.resize(N);
+
+	for (int i = 0; i < N; ++i)
+	{
+		string line;
+		cin >> line;
+
+		for (int j = 0; j < line.length(); ++j)
+		{
+			char color = line[j];
+			grid[i].push_back(color);
+		}
+	}
+
+	/*for (int y = 0; y < N; ++y)
+	{
+		for (int x = 0; x < N; ++x)
+		{
+			cin >> grid[y][x];
+		}
+	}*/
+
+	for (int y = 0; y < N; ++y)
+	{
+		for (int x = 0; x < N; ++x)
+		{
+			if (visit[y][x])
+			{
+				continue;
+			}
+
+			MakeArea(grid, visit, x, y, grid[y][x]);
+
+			if (grid[y][x] == 'B')
+			{
+				++blueCount;
+			}
+
+		}
+	}
+
+
+
+
+	cout << result << ' ' << result - blueCount;
 }
 
 
