@@ -186,7 +186,7 @@ void CheckNetwork(bool* visited, int currentDepth, std::vector<std::vector<int>>
 	{
 		if (i == j)
 		{
-			continue;
+			continue; 
 		}
 
 		if (!visited[j] && computers[i][j])
@@ -246,48 +246,63 @@ int TargetNumber(std::vector<int> numbers, int target)
 bool visit[100][100] = { false };
 
 
-void MakeArea(std::vector<vector<char>> grid, int indexX, int indexY, char color)
+void MakeArea(std::vector<vector<char>> grid, int indexX, int indexY, char color, bool isRedGreen)
 {
-	// 이미 방문했거나 탐색할 수 없으면 종료
-	if (visit[indexY][indexX] ||
-		indexX < 0 || indexY < 0 || indexX >= grid.size() || indexY >= grid.size())
+	visit[indexY][indexX] = true;
+
+	// 4방향 탐색
+	int dirX[] = { 1,0,-1,0 };
+	int dirY[] = { 0,1, 0,-1 };
+
+	for (int i = 0; i < 4; ++i)
 	{
-		return;
-	}
+		int nextX = indexX + dirX[i];
+		int nextY = indexY + dirY[i];
 
-
-	// 같은 색이 아니라면 탐색을 중지한다.
-	if (color != grid[indexY][indexX])
-	{
-		return;
-	}
-
-	else
-	{
-
-		visit[indexY][indexX] = true;
-
-		int dirX[] = { 1,0,-1,0 };
-		int dirY[] = { 0,1, 0,-1 };
-
-		for (int i = 0; i < 4; ++i)
+		// 조사가 가능한 방향이고
+		if (nextX >= 0 && nextY >= 0 && 
+			nextX < grid.size() && nextY < grid.size() &&
+			!visit[nextY][nextX])
 		{
-			int nextX = indexX + dirX[i];
-			int nextY = indexX + dirY[i];
+			if (!isRedGreen)
+			{
+				// 같은 영역이라면 구역을 만듦
+				if (color == grid[nextY][nextX])
+				{
+					MakeArea(grid, nextX, nextY, color);
+				}
+			}
 
-			// bool로 바꿔서 생각하기
-			MakeArea(grid, nextX, nextY, color);
+			// 적록 색약인 경우
+			else
+			{ 
+				// color가 B가 아닌 경우
+				if (color == 'B')
+				{
+					if ('B' != grid[nextY][nextX])
+					{
+						continue;
+					}
+				} 
+					
+				else
+				{
+					if ('B' == grid[nextY][nextX])
+					{
+						continue;
+					}
+				}
 
-			// 4방향 다 갈 수 없으면 영역 종료
+				MakeArea(grid, nextX, nextY, color, true);
+			}
 		}
 	}
-
 }
 
 void RedGreenColorWeakness()
 {
 	int result = 0;
-	int blueCount = 0;
+	int redGreenResult = 0;
 
 	int N;
 	vector<vector<char>> grid;
@@ -308,26 +323,42 @@ void RedGreenColorWeakness()
 		}
 	}
 
+
 	for (int y = 0; y < N; ++y)
 	{
 		for (int x = 0; x < N; ++x)
 		{
-			if (visit[y][x])
+			// 영역을 만들지 않은 경우
+			if (!visit[y][x])
 			{
-				continue;
-			}
-
-			MakeArea(grid, x, y, grid[y][x]);
-			++result;
-
-			if (grid[y][x] == 'B')
-			{
-				++blueCount;
+				MakeArea(grid, x, y, grid[y][x]);
+				++result;
 			}
 		}
 	}
 
-	cout << result << ' ' << result - blueCount;
-}
+	for (int y = 0; y < N; ++y)
+	{
+		for (int x = 0; x < N; ++x)
+		{
+			visit[y][x] = false;
+		}
+	}
 
+	for (int y = 0; y < N; ++y)
+	{
+		for (int x = 0; x < N; ++x)
+		{
+			// 영역을 만들지 않은 경우
+			if (!visit[y][x])
+			{
+				MakeArea(grid, x, y, grid[y][x],true);
+				++redGreenResult;
+			}
+		}
+	}
+
+
+	cout << result << ' ' << redGreenResult;
+}
 
