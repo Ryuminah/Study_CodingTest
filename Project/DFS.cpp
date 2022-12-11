@@ -246,7 +246,7 @@ int TargetNumber(std::vector<int> numbers, int target)
 bool visit[100][100] = { false };
 
 
-void MakeArea(std::vector<vector<char>> grid, int indexX, int indexY, char color, bool isRedGreen)
+void MakeArea(std::vector<vector<char>>& grid, int indexX, int indexY, char color, bool isRedGreen)
 {
 	visit[indexY][indexX] = true;
 
@@ -360,5 +360,103 @@ void RedGreenColorWeakness()
 
 
 	cout << result << ' ' << redGreenResult;
+}
+
+// 다른 풀이
+void MakeArea2(std::vector<std::vector<char>>& grid, int indexX, int indexY)
+{
+	visit[indexY][indexX] = true;
+
+	// 4방향 탐색
+	int dirX[] = { 1,0,-1,0 };
+	int dirY[] = { 0,1, 0,-1 };
+
+	for (int i = 0; i < 4; ++i)
+	{
+		int nextX = indexX + dirX[i];
+		int nextY = indexY + dirY[i];
+
+		// 조사가 불가능할 경우 지나감
+		if (nextX < 0 || nextY <0 ||
+			nextX >= grid.size() || nextY >= grid.size())
+		{
+			continue;
+		}
+
+		if (!visit[nextY][nextX] && grid[indexY][indexX] == grid[nextY][nextX])
+		{
+			MakeArea2(grid, nextX, nextY);
+		}
+	}
+}
+
+void RedGreenColorWeakness2()
+{
+	int result = 0;
+	int redGreenResult = 0;
+	int N;
+	vector<vector<char>> grid;
+
+	// Input
+	cin >> N;
+	grid.resize(N);
+
+	for (int i = 0; i < N; ++i)
+	{
+		string line;
+		cin >> line;
+
+		for (int j = 0; j < line.length(); ++j)
+		{
+			char color = line[j];
+			grid[i].push_back(color);
+		}
+	}
+
+	for (int y = 0; y < N; ++y)
+	{
+		for (int x = 0; x < N; ++x)
+		{
+			// 영역을 만들지 않은 경우
+			if (!visit[y][x])
+			{
+				MakeArea2(grid, x, y);
+				++result;
+			}
+		}
+	}
+
+	memset(visit, false, sizeof(visit));
+
+	for (int y = 0; y < N; ++y)
+	{
+		for (int x = 0; x < N; ++x)
+		{
+			char color = grid[y][x];
+			grid[y][x] = color == 'G' ? 'R' : color;
+		}
+	}
+
+	for (int y = 0; y < N; ++y)
+	{
+		for (int x = 0; x < N; ++x)
+		{
+			// 영역을 만들지 않은 경우
+			if (!visit[y][x])
+			{
+				MakeArea2(grid, x, y);
+				++redGreenResult;
+			}
+		}
+	}
+
+	cout << result << ' ' << redGreenResult;
+}
+
+int ShortestDistanceInGameMap(std::vector<std::vector<int>> maps)
+{
+	int answer = -1;
+
+	return 0;
 }
 

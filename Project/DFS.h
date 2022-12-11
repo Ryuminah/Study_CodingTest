@@ -19,5 +19,11 @@ void CalculateNumber(std::vector<int> numbers, int target, int index, int totalS
 int TargetNumber(std::vector<int> numbers, int target);
 
 //22.12.10 백준 10026번 적록색약
-void MakeArea(std::vector<std::vector<char>> grid, int indexX, int indexY, char color, bool isRedGreen = false);
+void MakeArea(std::vector<std::vector<char>>& grid, int indexX, int indexY, char color, bool isRedGreen = false);
 void RedGreenColorWeakness();
+
+void MakeArea2(std::vector<std::vector<char>>& grid, int indexX, int indexY);
+void RedGreenColorWeakness2();
+
+//22.12.11 게임 맵 최단거리
+int ShortestDistanceInGameMap(std::vector<std::vector<int>> maps);
