@@ -34,6 +34,9 @@
     <Filter Include="Algorithm\08. DP">
       <UniqueIdentifier>{c19c7e2b-2fb8-48c7-920b-1e8a51d3686b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Algorithm\10. etc">
+      <UniqueIdentifier>{97bb1cb3-a230-420e-8481-3485cdd0b1e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,6 +63,7 @@
     <ClCompile Include="DynamicPrograming.cpp">
       <Filter>Algorithm\08. DP</Filter>
     </ClCompile>
+    <ClCompile Include="etc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GreedyAlgorithm.h">
@@ -86,5 +90,6 @@
     <ClInclude Include="DynamicPrograming.h">
       <Filter>Algorithm\08. DP</Filter>
     </ClInclude>
+    <ClInclude Include="etc.h" />
   </ItemGroup>
 </Project>
