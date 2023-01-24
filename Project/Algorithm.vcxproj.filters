@@ -63,7 +63,9 @@
     <ClCompile Include="DynamicPrograming.cpp">
       <Filter>Algorithm\08. DP</Filter>
     </ClCompile>
-    <ClCompile Include="etc.cpp" />
+    <ClCompile Include="etc.cpp">
+      <Filter>Algorithm\10. etc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GreedyAlgorithm.h">
@@ -90,6 +92,8 @@
     <ClInclude Include="DynamicPrograming.h">
       <Filter>Algorithm\08. DP</Filter>
     </ClInclude>
-    <ClInclude Include="etc.h" />
+    <ClInclude Include="etc.h">
+      <Filter>Algorithm\10. etc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

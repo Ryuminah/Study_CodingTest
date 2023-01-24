@@ -7,4 +7,8 @@ using namespace std;
 int Camouflage(vector<vector<string>> clothes);
 #pragma endregion
 
-
+#pragma region Recursion
+// 백준 1992번 : 쿼드트리
+void Quad(int x, int y, int size);
+void QuadTree();
+#pragma endregion
