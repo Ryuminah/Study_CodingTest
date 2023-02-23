@@ -1,5 +1,6 @@
 #pragma once
-#include "STLheader.h"
+#include "STLHeader.h"
+using namespace std;
 
 // 선택 정렬
 void SelectionSort();
@@ -10,19 +11,13 @@ void InsertionSort();
 // 퀵 정렬
 void QuickSort(int* arrData, int startIndex, int endIndex);
 
-// 계수 정렬
 void CountSort(int* arrData, int arrSize, int minValue, int maxValue);
 
+// 22.12.25 프로그래머스 H-Index
+int HIndex(vector<int> citations);
 
-////////////////////////////////////// 문제 //////////////////////////////////////
-// 실전문제 2번 위에서 아래로
-void UpToDown();
+// 22.12.2 프로그래머스 H-Index
+long long WorkOverTime(int n, vector<int> works);
 
-// 실전문제 3번 위에서 아래로
-void PrintStudent();
-
-// 백준 2309번 일곱난쟁이
-void SevenDwarfs();
-
-// 프로그래머스 최솟값 만들기
-int MakeMinimumValue(std::vector<int> A, std::vector<int> B);
+// 22.2.1 프로그래머스 숫자 게임
+int NumberGame(vector<int> A, vector<int> B);

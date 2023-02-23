@@ -1,7 +1,6 @@
 #include "Sorting.h"
-#include "STLheader.h"
-
-using namespace std;
+#include <vector>
+#include <iostream>
 
 void SelectionSort()
 {
@@ -68,7 +67,7 @@ void InsertionSort()
 		int currentValue = arr[currentIndex];
 
 		// 자신보다 작은 인덱스를 순회하며 현재 데이터의 자리를 찾는다.
-		for (int compareIndex = currentIndex - 1; compareIndex >= 0; --compareIndex)
+		for (int compareIndex = currentIndex-1 ; compareIndex >= 0; --compareIndex)
 		{
 			int compareValue = arr[compareIndex];
 
@@ -78,7 +77,7 @@ void InsertionSort()
 				arr[compareIndex + 1] = compareValue;
 				arr[compareIndex] = currentValue;
 			}
-
+			
 			// currentValue가 더 크다면 그대로 멈춘다.
 			else
 			{
@@ -107,9 +106,9 @@ void QuickSort(int* arrData, int startIndex, int endIndex)
 
 	// 피봇을 지정
 	int pivotValue = arrData[startIndex];
-	int leftIndex = startIndex + 1;
+	int leftIndex = startIndex+1;
 	int rightIndex = endIndex;
-
+	
 	// 왼쪽에부터 피봇보다 큰 데이터를 고르고, 오른쪽에서부터 피봇보다 작은 데이터를 선택한다.
 
 	while (leftIndex <= rightIndex)
@@ -144,15 +143,15 @@ void QuickSort(int* arrData, int startIndex, int endIndex)
 
 	// 위의 정렬 과정을 좌, 우로 나눠서 반복한다.
 
-	QuickSort(arrData, startIndex, rightIndex - 1);
-	QuickSort(arrData, leftIndex + 1, endIndex);
+	QuickSort(arrData, startIndex, rightIndex -1);
+	QuickSort(arrData, leftIndex+1, endIndex);
 
 }
 
 void CountSort(int* arrData, int arrSize, int minValue, int maxValue)
 {
 	int sortSize = (maxValue - minValue) + 1;
-	int* arrSort = new int[sortSize] { 0 };
+	int* arrSort = new int[sortSize]{ 0 };
 
 	for (int i = 0; i < arrSize; ++i)
 	{
@@ -165,7 +164,7 @@ void CountSort(int* arrData, int arrSize, int minValue, int maxValue)
 	for (int i = 0; i < sortSize; ++i)
 	{
 		int valueCount = arrSort[i];
-
+		
 		if (valueCount == 0)
 		{
 			continue;
@@ -180,114 +179,110 @@ void CountSort(int* arrData, int arrSize, int minValue, int maxValue)
 			}
 		}
 	}
-
+	
 	delete[] arrSort;
 }
 
-void UpToDown()
+
+void CountSort()
 {
-	int count = 0;
-	std::cin >> count;
-	
-	int* arrSort = new int[count];
+	int arr[] = { 7,5,9,0,3,1,6,2,9,1,4, 8,0,5,2 };
 
+	int arrSize = 10;				// 배열의 총 사이즈
+	int minIndex = 0;				// 가장 작은 값을 가지고 있는 인덱스
 
-	for (int i = 0; i < count; ++i)
+	std::cout << "정렬 전 : ";
+
+	for (int i = 0; i < arrSize; ++i)
 	{
-		std::cin >> arrSort[i];
+		std::cout << arr[i] << " ";
 	}
 
-	std::sort(arrSort, arrSort+count, std::greater<>());
-
-	for (int i = 0; i < count; ++i)
-	{
-		std::cout << arrSort[i] << ' ';
-	}
+	std::cout << '\n';
 }
 
-void PrintStudent()
-{
-	int studentCount = 0;
-	std::cin >> studentCount;
-	std::map<int, std::string> studentData;
 
-	for (int i = 0; i < studentCount; ++i)
-	{
-		std::string name;
-		int score;
-		std::cin >> name >> score;
-
-		studentData[score] = name;
-	}
-
-	auto iter = studentData.begin();
-	auto iterEnd = studentData.end();
-
-	for (; iter != iterEnd; ++iter)
-	{
-		std::cout << iter->second << ' ';
-	}
-}
-
-void SevenDwarfs()
-{
-	std::vector<int> arrNumber;
-	arrNumber.resize(9);
-	int totalValue = 0;
-
-	for (int i = 0; i < 9; ++i)
-	{
-		std::cin >> arrNumber[i];
-		totalValue += arrNumber[i];
-	}
-	
-	// 7개의 인덱스를 저장
-	std::sort(arrNumber.begin(), arrNumber.end());
-	
-	
-	for (int i = 0; i < arrNumber.size(); ++i)
-	{
-		for (int j = 0; j < arrNumber.size(); ++j)
-		{
-			if (i == j)
-			{
-				continue;
-			}
-
-			int number = arrNumber[i] + arrNumber[j];
-
-			if ((totalValue - number) == 100)
-			{
-				for (int k = 0; k < arrNumber.size(); k++)
-				{
-					if (k == i || k == j)
-					{
-						continue;
-					}
-
-					std::cout << arrNumber[k] << '\n';
-				}
-
-				return;
-			}
-		}
-	}
-
-}
-
-int MakeMinimumValue(vector<int> A, vector<int> B)
+int HIndex(vector<int> citations)
 {
 	int answer = 0;
 
-	sort(A.begin(), A.end());
-	sort(B.begin(), B.end(), greater<int>());
+	sort(citations.begin(), citations.end(), greater<int>());
 
-	int length = A.size();
-
-	for (int i = 0; i < length; ++i)
+	for (int i = 0; i < citations.size(); ++i)
 	{
-		answer += A[i] * B[i];
+		if (citations[i] > i)
+			++answer;
+		else
+			break;
 	}
 
 	return answer;
 }
+
+
+long long WorkOverTime(int n, vector<int> works)
+{
+	long long answer = 0;
+	priority_queue<int> q;
+
+	int totalTime = 0;
+	for (int i = 0; i < works.size(); ++i)
+	{
+		totalTime += works[i];
+		q.push(works[i]);
+	}
+
+	if (totalTime <= n)
+	{
+		return 0;
+	}
+
+	while (n != 0)
+	{
+		int maxTime = q.top();
+		q.pop();
+
+		if (maxTime != 0) --maxTime;
+
+		q.push(maxTime);
+		--n;
+	}
+
+	while (!q.empty())
+	{
+		answer += q.top() * q.top();
+		q.pop();
+	}
+
+	return answer;
+}
+
+int NumberGame(vector<int> A, vector<int> B)
+{
+	int answer = 0;
+	priority_queue<int> aQ;
+	priority_queue<int> bQ;
+
+	for (int i = 0; i < A.size(); ++i)
+	{
+		aQ.push(A[i]);
+		bQ.push(B[i]);
+	}
+
+	while (!aQ.empty())
+	{
+		int aNumber = aQ.top();
+		aQ.pop();
+
+		int bNumber = bQ.top();
+
+		if (bNumber > aNumber)
+		{
+			++answer;
+			bQ.pop();
+		}
+	}
+
+	return answer;
+}
+

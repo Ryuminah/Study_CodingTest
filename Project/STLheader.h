@@ -1,16 +1,23 @@
 #pragma once
-
-#include <iostream>
-
-#include <list>
 #include <vector>
-#include <unordered_map>
+#include <list>
 #include <map>
+#include <unordered_map>
+#include <algorithm>
 #include <set>
+#include <iostream>
 #include <string>
+
 
 #include <stack>
 #include <queue>
-#include <algorithm>
+#include <math.h>
+#include <utility>
+#include <numeric>
+#include <cmath>
+#include <sstream>
 
+using namespace std;
 #define PI 3.141592
+
+

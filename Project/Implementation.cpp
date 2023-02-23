@@ -1,7 +1,9 @@
 #include "Implementation.h"
-#include "STLheader.h"
-
-using namespace std;
+#include <algorithm>
+#include <vector>
+#include <iostream>
+#include <map>
+#include <string>
 
 //21. 8.13 예제 4-1 상하좌우
 void UpDownLeftRight()
@@ -473,202 +475,27 @@ void Message()
 
 }
 
-void MinMax()
-{
-	int count;
-	std::cin >> count;
-
-	int input;
-	int min = 1000001;
-	int max = -1000001;
-
-	for (int i = 0; i < count; ++i)
-	{
-		std::cin >> input;
-
-		if (input > max)
-		{
-			max = input;
-		}
-
-		if (input < min)
-		{
-			min = input;
-		}
-	}
-
-	std::cout << min << ' ' << max;
-}
-
-void CountWord()
-{
-	std::string sentence;
-	std::getline(std::cin, sentence);
-
-	int wordCount = 0;
-	char prevWord = ' ';
-
-	for (size_t i = 0; i < sentence.length(); ++i)
-	{	
-		// 이전 단어가 공백일 경우 
-		if (' ' == prevWord &&
-			' ' != sentence[i])
-		{
-			++wordCount;
-		}
-
-		prevWord = sentence[i];
-	}
-
-	std::cout << wordCount;
-}
-
-std::vector<int> Tuple(std::string s)
+vector<int> BestSet(int n, int s)
 {
 	vector<int> answer;
 
-	string number;
-	map<string, int> tuple;
+	int q = s / n;
+	int mod = s % n;
 
-	// 문자를 읽으면서
-	for (int i = 0; i < s.length(); ++i)
+	if (q != 0)
 	{
-		if (s[i] == '{')
+		for (int i = 0; i < n; ++i)
+			answer.push_back(q);
+
+		for (int i = answer.size() - 1; mod != 0; --i)
 		{
-			continue;
-		}
-
-		else if (s[i] == ',' || s[i] == '}')
-		{
-			// 이미 존재하는 숫자인지 확인
-			if (number.size() != 0)
-			{
-				auto iter = tuple.find(number);
-
-				if (iter == tuple.end())
-				{
-					//tuple.insert({ number, 1 });
-					tuple.insert(std::pair<string, int>(number, 1));
-
-				}
-
-				else
-				{
-					iter->second++;
-				}
-
-				number.clear();
-			}
-		}
-
-		// 숫자일 경우
-		else
-		{
-			number += s[i];
+			++answer[i];
+			--mod;
 		}
 	}
 
-
-	map<int, string, greater<int>> sortTuple;
-
-	for (auto iter = tuple.begin(); iter != tuple.end(); ++iter)
-	{
-		sortTuple.insert({ iter->second,iter->first });
-	}
-
-	for (auto iter = sortTuple.begin(); iter != sortTuple.end(); ++iter)
-	{
-		answer.push_back(stoi(iter->second));
-	}
-
-	return answer;
-
-}
-
-int LeastCommonMultiple(std::vector<int> arr)
-{
-	int answer = 0;
-
-	sort(arr.begin(), arr.end());
-
-	int rest = 0;
-
-	if (arr.size() == 1)
-	{
-		return arr[0];
-	}
-
-	answer = arr[0];
-
-	for (int i = 1; i < arr.size(); ++i)
-	{
-		int current = arr[i];
-
-		// 다음 수의 약수인 경우
-		int bigger = max(answer, current);
-		int divide = min(answer, current);
-		int remainder = bigger % divide;
-
-		// 약수인 경우
-		if (remainder == 0)
-		{
-			answer = bigger;
-		}
-
-		else
-		{
-			int total = current;
-			while ((total % answer) != 0)
-			{
-				total += current;
-			}
-
-			answer = total;
-		}
-	}
-
-	return answer;
-}
-
-std::vector<int> WordChain(int n, std::vector<string> words)
-{
-	vector<int> answer;
-	answer.resize(2);
-
-	map<string, int> wordsCountTable;
-
-	wordsCountTable[words[0]] = 1;
-	int order = 2;
-
-	for (int i = 1; i < words.size(); ++i)
-	{
-		string currentWord = words[i];
-		string prevWord = words[i - 1];
-
-		// 탈락 조건 체크
-		// 이미 등록되어 있는 단어거나 앞의 단어와 이어지지 않는 경우
-		if (wordsCountTable.find(words[i]) != wordsCountTable.end() ||
-			currentWord.front() != prevWord.back())
-		{
-			answer[0] = order;
-			answer[1] = (i + 1) % n != 0 ? (i + 1) / n + 1 : (i + 1) / n;
-
-			return answer;
-		}
-
-		// table에 등록
-		wordsCountTable[words[i]] = order;
-
-		if (order == n)
-		{
-			order = 1;
-		}
-
-		else
-		{
-			++order;
-		}
-	}
+	else
+		answer.push_back(-1);
 
 	return answer;
 }

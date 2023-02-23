@@ -1,73 +1,191 @@
 #include "etc.h"
 
-int Camouflage(vector<vector<string>> clothes)
+string MaxMin(string s)
 {
-    unordered_map<string, int> clothesMap;
-    int answer = 1;
+    vector<int> numbers;
+    string answer = "";
 
-    for (auto& clothInfo : clothes)
+    string number = "";
+    for (int i = 0; i < s.length(); ++i)
     {
-        ++clothesMap[clothInfo[1]];
+        number += s[i];
+
+        if (s[i] == ' ' || i == (s.length() - 1))
+        {
+            numbers.push_back(stoi(number));
+            number.clear();
+        }
     }
 
-    for (auto& iter : clothesMap)
-    {
-        answer *= (iter.second + 1);
-    }
+    sort(numbers.begin(), numbers.end());
 
-    return --answer;
+    answer += to_string(numbers[0]);
+    answer += ' ';
+    answer += to_string(numbers[numbers.size() - 1]);
+
+    return answer;
 }
 
-string answer;
-char quad[65][65] = {' '};
-void Quad(int x, int y, int size)
+bool CheckLine(bool* arr, int findCount, string currentWord)
 {
-    bool canZip = true;
-    // 압축이 가능한 경우
-    for (int i = y; i < y + size; ++i)
+    bool result = false;
+    int checkCount = 0;
+    for (int i = 0; i < 3; ++i)
     {
-        for (int j = x; j < x + size; ++j)
+        if (arr[i])
         {
-            // 이미 압축이 된 경우 종료
-            if (quad[y][x] != quad[i][j])
+            ++checkCount;
+        }
+    }
+
+    // 각 줄에서 하나씩 찾고, 단어를 전부 찾았다면
+    if (checkCount == 3 &&
+        findCount == currentWord.length())
+    {
+        result = true;
+    }
+
+    return result;
+}
+
+vector<string> CardGame(vector<string> card, vector<string> word)
+{
+    vector<string> answer = {};
+
+    // 한 단어당 vector를 전부 탐색해야함.
+    for (int i = 0; i < word.size(); ++i)
+    {
+        string strCard;
+        // 카드를 하나의 문자열로 변환
+        for (int i = 0; i < card.size(); ++i)
+        {
+            strCard += card[i];
+        }
+
+        string currentWord = word[i];
+        int findCount = 0;
+        bool checkLine[3] = { false };
+
+        for (int j = 0; j < currentWord.length(); ++j)
+        {
+            char findChar = currentWord[j];
+            int pos = strCard.find(findChar);
+
+            // 문자가 존재하지 않을 경우
+            if (pos == -1)
             {
-                canZip = false;
+                cout << findChar;
                 break;
             }
+            else
+            {
+                // 찾았을 경우 해당 문자를 소문자로 바꿔줌(찾음 처리)
+                strCard[pos] += 32;
+
+                int line = pos / 8;
+                checkLine[line] = true;
+                ++findCount;
+            }
+        }
+
+        if (CheckLine(checkLine, findCount, currentWord))
+        {
+            answer.push_back(currentWord);
         }
     }
-    
-    if (!canZip)
+
+    if (answer.size() == 0)
     {
-        int half = size / 2;
-        answer += '(';
-        Quad(x, y, half);   //왼쪽 위
-        Quad(x + half, y, half);    //오른쪽 위
-        Quad(x, y + half, half);    // 왼쪽 아래
-        Quad(x + half, y + half, half);
-        answer += ')';
+        answer.push_back("-1");
     }
-    else
-        answer += quad[y][x];
+
+    return answer;
+
 }
 
-void QuadTree()
+int MakeBtoA(string before, string after)
 {
-    string input;
-    int N;
-    cin >> N;
-    
-    for (int i = 0; i < N; ++i)
+    int answer = 1;
+    unordered_map<char, int> beforeTable;
+    unordered_map<char, int> afterTable;
+
+    // 단어를 등록
+    for (int i = 0; i < before.length(); ++i)
     {
-        cin >> input;
-        for (int j = 0; j < N; ++j)
+        // table에 없을 경우
+        if (beforeTable.find(before[i]) == beforeTable.end())
+            beforeTable[before[i]] = 1;
+        else
+            ++beforeTable[before[i]];
+
+        if (afterTable.find(after[i]) == afterTable.end())
+            afterTable[after[i]] = 1;
+        else
+            ++afterTable[after[i]];
+    }
+
+
+    //문자열의 글자가 같은지, 글자 갯수가 같은지 확인
+    auto iter = afterTable.begin();
+    auto iterEnd = afterTable.end();
+
+    for (; iter != iterEnd; ++iter)
+    {
+        // 알파벳이 존재하지 않을 경우
+        if (beforeTable.find(iter->first) == beforeTable.end())
+            return 0;
+
+        // 알파벳이 존재하는 경우 철자 수까지 확인함
+        else
         {
-            quad[i][j] = input[j];
+            if (beforeTable[iter->first] != iter->second)
+                return 0;
         }
     }
 
-    Quad(0, 0, N);
+    return answer;
+}
 
-    cout << answer << endl;
+string MorseSign(string letter)
+{
+    string answer = "";
+    string morse = "'.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f','--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l','--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r','...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x','-.--':'y','--..':'z'";
 
+    // Map을 만들어서 table제작
+    map<string, char> morseTable;
+    string morseSign = "";
+    for (int i = 0; i < morse.length(); ++i)
+    {
+        if (morse[i] == '.' || morse[i] == '-')
+        {
+            morseSign += morse[i];
+        }
+
+        // 문자 일 경우
+        else if (morse[i] >= 'a' && morse[i] <= 'z')
+        {
+            morseTable[morseSign] = morse[i];
+            morseSign.clear();
+        }
+    }
+
+    string morseLetter = "";
+    for (int i = 0; i < letter.length(); ++i)
+    {
+        if (letter[i] != ' ')
+        {
+            morseLetter += letter[i];
+        }
+
+        else
+        {
+            answer += morseTable[morseLetter];
+            morseLetter.clear();
+        }
+    }
+
+    // 마지막 철자는 저장
+    answer += morseTable[morseLetter];
+
+    return answer;
 }

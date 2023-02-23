@@ -1,14 +1,19 @@
 #pragma once
-#include "STLheader.h"
+#include "STLHeader.h"
 using namespace std;
 
-#pragma region Hash
-// 프로그래머스 위장
-int Camouflage(vector<vector<string>> clothes);
+// 22.12.21 프로그래머스 : 최댓값과 최솟값
+string MaxMin(string s);
+
+bool CheckLine(bool* arr, int findCount, string currentWord);
+vector<string> CardGame(vector<string> card, vector<string> word);
+
+
+#pragma region 문자열
+// 23.1.8 프로그래머스 : A로 B만들기
+int MakeBtoA(string before, string after);
+
+// 23.1.9 프로그래머스 : 모스부호(1)
+string MorseSign(string letter);
 #pragma endregion
 
-#pragma region Recursion
-// 백준 1992번 : 쿼드트리
-void Quad(int x, int y, int size);
-void QuadTree();
-#pragma endregion

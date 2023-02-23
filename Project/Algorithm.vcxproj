@@ -24,7 +24,7 @@
     <ProjectGuid>{970d49a4-3744-4fb1-adc1-4849e36a696f}</ProjectGuid>
     <RootNamespace>Algorithm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>CodingTest</ProjectName>
+    <ProjectName>RMA_CodingTest</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -145,25 +145,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BFS.cpp" />
+    <ClCompile Include="DataStructure.cpp" />
     <ClCompile Include="DFS.cpp" />
+    <ClCompile Include="DP.cpp" />
     <ClCompile Include="etc.cpp" />
     <ClCompile Include="GreedyAlgorithm.cpp" />
     <ClCompile Include="Implementation.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math.cpp" />
+    <ClCompile Include="MyVector.cpp" />
+    <ClCompile Include="Search.cpp" />
     <ClCompile Include="Sorting.cpp" />
-    <ClCompile Include="Queue.cpp" />
-    <ClCompile Include="DynamicPrograming.cpp" />
+    <ClCompile Include="CodingTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BFS.h" />
+    <ClInclude Include="DataStructure.h" />
     <ClInclude Include="DFS.h" />
+    <ClInclude Include="DP.h" />
     <ClInclude Include="etc.h" />
     <ClInclude Include="GreedyAlgorithm.h" />
     <ClInclude Include="Implementation.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="MyVector.h" />
+    <ClInclude Include="Search.h" />
     <ClInclude Include="Sorting.h" />
-    <ClInclude Include="Queue.h" />
-    <ClInclude Include="STLheader.h" />
-    <ClInclude Include="DynamicPrograming.h" />
+    <ClInclude Include="STLHeader.h" />
+    <ClInclude Include="CodingTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

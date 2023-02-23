@@ -22,20 +22,32 @@
     <Filter Include="Algorithm\05. Sorting">
       <UniqueIdentifier>{db2d0d01-3efd-42f6-abe2-c2f57bdf3719}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\09. Stack/Queue">
-      <UniqueIdentifier>{bfdbb047-9904-49e0-a10d-2fea815b6e89}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Algorithm\06.BinarySearch">
-      <UniqueIdentifier>{3220e86d-4a61-463d-90d7-23b9b80b83e5}</UniqueIdentifier>
+    <Filter Include="Algorithm\06. Search">
+      <UniqueIdentifier>{847d59c1-b1ea-4cf0-91c0-12441b3ae87b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Algorithm\07. Graph">
-      <UniqueIdentifier>{39bd60e3-3fcb-4b91-8764-8afe36df0b26}</UniqueIdentifier>
+      <UniqueIdentifier>{32cb8c0a-f4bb-4a77-b697-94848aed9d6b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Algorithm\08. DP">
-      <UniqueIdentifier>{c19c7e2b-2fb8-48c7-920b-1e8a51d3686b}</UniqueIdentifier>
+      <UniqueIdentifier>{0b0f2081-cf35-4775-aa6f-ae195cf93924}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\10. etc">
-      <UniqueIdentifier>{97bb1cb3-a230-420e-8481-3485cdd0b1e0}</UniqueIdentifier>
+    <Filter Include="Algorithm\09. Math">
+      <UniqueIdentifier>{0480c25f-5fe8-44d3-a744-b360b4fc2d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\CodingTest">
+      <UniqueIdentifier>{ca3d5e3f-4c75-4ad5-b81b-8b764720125b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\11.etc.">
+      <UniqueIdentifier>{0e97f4f4-2db6-42d3-ad46-7a0b91a4b3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\10.DataStructure">
+      <UniqueIdentifier>{d9fa2292-4b67-4ba9-b7fa-76e2dc470a3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure">
+      <UniqueIdentifier>{f95857ee-1bbc-4a0a-a715-d937e92b9885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure\Vector">
+      <UniqueIdentifier>{cd04a17d-7bb0-4e8a-9461-a0e35d9f0a78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,20 +69,27 @@
     <ClCompile Include="Sorting.cpp">
       <Filter>Algorithm\05. Sorting</Filter>
     </ClCompile>
-    <ClCompile Include="Queue.cpp">
-      <Filter>Algorithm\09. Stack/Queue</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicPrograming.cpp">
-      <Filter>Algorithm\08. DP</Filter>
+    <ClCompile Include="CodingTest.cpp" />
+    <ClCompile Include="Search.cpp">
+      <Filter>Algorithm\06. Search</Filter>
     </ClCompile>
     <ClCompile Include="etc.cpp">
-      <Filter>Algorithm\10. etc</Filter>
+      <Filter>Algorithm\11.etc.</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Algorithm\09. Math</Filter>
+    </ClCompile>
+    <ClCompile Include="DP.cpp">
+      <Filter>Algorithm\08. DP</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructure.cpp">
+      <Filter>Algorithm\10.DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="MyVector.cpp">
+      <Filter>DataStructure\Vector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GreedyAlgorithm.h">
-      <Filter>Algorithm\01. GreedyAlgorithm</Filter>
-    </ClInclude>
     <ClInclude Include="Implementation.h">
       <Filter>Algorithm\02. Implementation</Filter>
     </ClInclude>
@@ -83,17 +102,30 @@
     <ClInclude Include="Sorting.h">
       <Filter>Algorithm\05. Sorting</Filter>
     </ClInclude>
-    <ClInclude Include="STLheader.h">
+    <ClInclude Include="STLHeader.h">
       <Filter>main</Filter>
     </ClInclude>
-    <ClInclude Include="Queue.h">
-      <Filter>Algorithm\09. Stack/Queue</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicPrograming.h">
-      <Filter>Algorithm\08. DP</Filter>
+    <ClInclude Include="CodingTest.h" />
+    <ClInclude Include="Search.h">
+      <Filter>Algorithm\06. Search</Filter>
     </ClInclude>
     <ClInclude Include="etc.h">
-      <Filter>Algorithm\10. etc</Filter>
+      <Filter>Algorithm\11.etc.</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Algorithm\09. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="DP.h">
+      <Filter>Algorithm\08. DP</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure.h">
+      <Filter>Algorithm\10.DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="GreedyAlgorithm.h">
+      <Filter>Algorithm\02. Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVector.h">
+      <Filter>DataStructure\Vector</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
